@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Look Model Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d9d5c7d8.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    body {
+      background: #ffffff;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+    }
+    body.dark-mode {
+      background: #1a1a1a;
+      color: #eee;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    form {
+      background: #f9f9f9;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    body.dark-mode form {
+      background: #222;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+    input, textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border 0.2s ease, background 0.3s ease, color 0.3s ease;
+    }
+    body.dark-mode input, body.dark-mode textarea {
+      background: #333;
+      color: #eee;
+      border-color: #555;
+    }
+    input:focus, textarea:focus {
+      border-color: #7a2aff;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      background: #7a2aff;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #5d1fd1;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .social-icons a {
+      color: #7a2aff;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #5d1fd1;
+    }
+    .success-message {
+      background: #e9e2ff;
+      color: #4b1bb8;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      display: none;
+    }
+    #themeToggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 45px;
+      height: 25px;
+      background: #7a2aff;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: ${'' /* empty, for toggle circle */};
+      padding: 2px;
+    }
+    #themeToggle::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      transform: translateX(0);
+    }
+    body.dark-mode #themeToggle::before {
+      transform: translateX(20px);
+    }
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .social-icons a {
+        font-size: 1.5rem;
+      }
+      #themeToggle {
+        width: 40px;
+        height: 22px;
+      }
+      #themeToggle::before {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle"></button>
+
+  <header>
+    <h1>Apply for Modeling</h1>
+    <p>Beauty Look Model Agency</p>
+  </header>
+
+  <div class="success-message" id="successMsg">
+    You have already submitted your application. Thank you!
+  </div>
+
+  <form id="applyForm" action="https://formspree.io/f/mgvndlzn" method="POST">
+    <label>Full Name *</label>
+    <input type="text" name="Full Name" id="fullname" required>
+
+    <label>Location *</label>
+    <input type="text" name="Location" id="location" required>
+
+    <label>Phone Number *</label>
+    <input type="tel" name="Phone Number" id="phone" required>
+
+    <label>Email</label>
+    <input type="email" name="Email" placeholder="Optional">
+
+    <label>Brief Description</label>
+    <textarea name="Description" rows="4" placeholder="Tell us about yourself (optional)"></textarea>
+
+    <button type="submit">Submit Application</button>
+  </form>
+
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p style="margin-top:10px; color:#777;">© 2025 Beauty Look Model Agency</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('applyForm');
+    const successMsg = document.getElementById('successMsg');
+    const themeToggle = document.getElementById('themeToggle');
+
+    // Dark mode toggle
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Check if the user already submitted
+    if (document.cookie.includes('applied=true')) {
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function (e) {
+      const fullName = document.getElementById('fullname').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!fullName || !location || !phone) {
+        e.preventDefault();
+        alert('Please fill in Full Name, Location, and Phone Number.');
+        return;
+      }
+
+      document.cookie = 'applied=true; max-age=' + 60 * 60 * 24 * 365 + '; path=/';
+      alert('Thank you for applying!');
+    });
+  </script>
+</body>
+</html>
